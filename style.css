@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightslategray;
+}
+
+.text-row {
+    display: flex;
+    flex-wrap: wrap;
+  width: 800px;
+  height: 400px;
+ background-color: wheat;
+ justify-content: flex-start;
+ align-items: center;
+}
+
+.text-row .text-item {
+    margin: 5px 10px;
+    font-size: 25px;
+    border: 1px solid black;
+    padding: 10px;
+    cursor: pointer;
+    height: 50px;
+}
