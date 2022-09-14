@@ -80,6 +80,33 @@ function dragOver(e) {
     e.preventDefault()
 }
 
+async function orderedSentence() {
+    let sentenceText = sentences.quotes[0].text
+    let sentenceSplit = sentenceText.split(' ')
+    let wordsArr = []
+    for(let i = 0; i < sentenceSplit.length; i++) {
+        wordsArr.push(sentenceSplit[i])
+    }
+   
+    return wordsArr;
+}
+
+const btn = document.querySelector('.btn')
+
+btn.addEventListener('click', async() => {
+//compare ordered sentence with lastly moved words
+//and if true your sentence is ordered properly
+//else it is not ordered properly
+
+    let lastlyMovedWords = []
+    let sentence = await orderedSentence();
+    console.log(sentence);
+    let allWords = document.querySelectorAll('.text-item')
+        for(let a = 0; a < allWords.length; a++) {
+            lastlyMovedWords.push(allWords[a].innerText);
+        }
+     console.log(lastlyMovedWords.every((val,index) => val === sentence[index]))
+})
 
 const tryApp = async () => {
     try {
