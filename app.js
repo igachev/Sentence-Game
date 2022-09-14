@@ -50,9 +50,7 @@ async function dragAndDropWords() {
         allWords[i].addEventListener('dragstart',dragStart)
         allWords[i].addEventListener('dragover',dragOver);
         allWords[i].addEventListener('drop',dragDrop)
-    }
-    
-    
+    } 
 }
 
 function dragStart(e) {
@@ -91,6 +89,16 @@ async function orderedSentence() {
     return wordsArr;
 }
 
+function checkSentence(lastlyMovedWords,orderedSentence) {
+    if(lastlyMovedWords.every((val,index) => 
+            val === orderedSentence[index])) {
+        alert('Congratulations!The sentence is correct!')
+     }
+     else {
+        alert('Error!The sentence is not in correct order!Try Again!')
+     }
+}
+
 const btn = document.querySelector('.btn')
 
 btn.addEventListener('click', async() => {
@@ -102,10 +110,12 @@ btn.addEventListener('click', async() => {
     let sentence = await orderedSentence();
     console.log(sentence);
     let allWords = document.querySelectorAll('.text-item')
+
         for(let a = 0; a < allWords.length; a++) {
             lastlyMovedWords.push(allWords[a].innerText);
         }
-     console.log(lastlyMovedWords.every((val,index) => val === sentence[index]))
+
+     checkSentence(lastlyMovedWords,sentence)
 })
 
 const tryApp = async () => {
