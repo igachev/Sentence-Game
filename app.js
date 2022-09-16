@@ -1,5 +1,5 @@
 
-
+let sentences;
 
 
 async function getRandomSentence() {
@@ -16,6 +16,7 @@ async function unorderedSentence() {
      sentences = await getRandomSentence()
     let sentenceText = sentences.quotes[0].text
     let sentenceSplit = sentenceText.split(' ')
+    console.log(sentenceSplit);
     let divContainer = document.createElement('div')
     divContainer.classList.add('text-row')
     let arr = []
@@ -28,7 +29,7 @@ async function unorderedSentence() {
     }
     
     for(let i = 0; i < arr.length; i++) {
-        let word = document.createElement('article')
+        let word = document.createElement('span')
         word.classList.add('text-item')
         word.textContent = sentenceSplit[arr[i]]        
         word.setAttribute('draggable','true')
@@ -89,7 +90,7 @@ async function orderedSentence() {
     return wordsArr;
 }
 
-function checkSentence(lastlyMovedWords,orderedSentence) {
+ function checkSentence(lastlyMovedWords,orderedSentence) {
     if(lastlyMovedWords.every((val,index) => 
             val === orderedSentence[index])) {
         alert('Congratulations!The sentence is correct!')
@@ -100,6 +101,24 @@ function checkSentence(lastlyMovedWords,orderedSentence) {
 }
 
 const btn = document.querySelector('.btn')
+const showBtn = document.querySelector('.show-btn')
+
+async function answer() {
+    let sentenceText = sentences.quotes[0].text
+    let sentenceSplit = sentenceText.split(' ')
+    let divContainer = document.createElement('div')
+    divContainer.classList.add('text-row-answer')
+
+    for(let i = 0; i < sentenceSplit.length; i++) {
+        let word = document.createElement('span')
+        word.classList.add('text-item-answer')
+        word.textContent = sentenceSplit[i]        
+        divContainer.append(word)  
+    }
+    
+    const showSentence = document.querySelector('.show-ordered-sentence')
+    showSentence.appendChild(divContainer)
+}
 
 btn.addEventListener('click', async() => {
 //compare ordered sentence with lastly moved words
@@ -118,10 +137,21 @@ btn.addEventListener('click', async() => {
      checkSentence(lastlyMovedWords,sentence)
 })
 
+showBtn.addEventListener('click',() => {
+    const showSentence = document.querySelector('.show-ordered-sentence')
+    if(!showSentence.classList.contains('show')) {
+        showSentence.classList.add('show')
+    }
+    else {
+        showSentence.classList.remove('show')
+    }
+})
+
 const tryApp = async () => {
     try {
         await unorderedSentence()
-        await dragAndDropWords()   
+        await dragAndDropWords() 
+         answer() 
         
     } catch (error) {
         console.log(error);

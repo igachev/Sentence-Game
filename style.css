@@ -9,6 +9,8 @@ body {
     padding: 0;
     background-color: #1BA7A6 ;
     font-family: 'PT Sans Caption', sans-serif;
+    
+    
 }
 
 header {
@@ -19,15 +21,15 @@ header {
 
 .container {
     margin: auto;
-    width: 98vw;
-    height: 70vh;
+    width: 90%;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #A37E76;
 }
 
-.text-row {
+.text-row, .text-row-answer {
     display: flex;
     flex-wrap: wrap;
   width: 95%;
@@ -35,11 +37,10 @@ header {
   margin: 0;
  background-color: #A39576;
  box-shadow: 5px 5px 15px 5px #000000;
-justify-content: flex-start;
-align-items: center;
+
 }
 
-.text-row .text-item {
+.text-row .text-item, .text-row-answer .text-item-answer {
     margin: 5px 10px;
     font-size: 25px;
     border: 1px solid black;
@@ -66,4 +67,16 @@ align-items: center;
 
 .btn:hover {
     background-color: #A37E76;
+}
+
+.show-ordered-sentence {
+    position: relative;
+    top: -1000px;
+    left: 0;
+    margin-left: 20px;
+    transition: top 0.3s ease-in-out; 
+}
+
+.show-ordered-sentence.show {
+    top: 20px;
 }
