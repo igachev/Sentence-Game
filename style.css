@@ -10,7 +10,6 @@ body {
     background-color: #1BA7A6 ;
     font-family: 'PT Sans Caption', sans-serif;
     
-    
 }
 
 header {
@@ -53,9 +52,10 @@ header {
 .btn-container {
     text-align: center;
     margin-top: 5px;
+    margin-bottom: 80px;
 }
 
-.btn {
+.btn-style {
     padding: 8px;
     border-radius: 10px;
     font-size: 18px;
@@ -65,7 +65,7 @@ header {
     transition: 0.3s background-color linear;
 }
 
-.btn:hover {
+.btn-style:hover {
     background-color: #A37E76;
 }
 
