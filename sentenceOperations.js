@@ -21,6 +21,7 @@ export async function unorderedSentence() {
     //console.log(sentenceSplit);
     let divContainer = document.createElement('div')
     divContainer.classList.add('text-row')
+    divContainer.innerText = ''
     let arr = []
 
     while(arr.length < sentenceSplit.length) {
@@ -40,8 +41,13 @@ export async function unorderedSentence() {
     }
     
     let container = document.querySelector('.container')
-    container.appendChild(divContainer)
     
+    if(container.children[0]?.className === 'text-row') {
+        container.replaceChild(divContainer,container.children[0])
+    }
+    else {
+        container.appendChild(divContainer)
+    }
 }
 
 
@@ -56,10 +62,13 @@ export async function orderedSentence() {
     return wordsArr;
 }
 
- export function checkSentence(lastlyMovedWords,orderedSentence) {
+ export async function checkSentence(lastlyMovedWords,orderedSentence) {
     if(lastlyMovedWords.every((val,index) => 
             val === orderedSentence[index])) {
-        alert('Congratulations!The sentence is correct!')
+        let confirmed = confirm('You guessed!Do you want to continue playing?')
+        if(confirmed) {
+            await unorderedSentence()
+        }
      }
      else {
         alert('Error!The sentence is not in correct order!Try Again!')

@@ -22,7 +22,7 @@ btn.addEventListener('click', async() => {
             lastlyMovedWords.push(allWords[a].innerText);
         }
 
-     checkSentence(lastlyMovedWords,sentence)
+   await  checkSentence(lastlyMovedWords,sentence)
 })
 
 showBtn.addEventListener('click',() => {
