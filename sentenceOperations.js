@@ -4,7 +4,7 @@ let sentences;
 
 
 export async function getRandomSentence() {
-let url = 'https://goquotes-api.herokuapp.com/api/v1/random?count=1'
+let url = 'https://api.quotable.io/quotes/random'
 try {
     let res = await fetch(url)
     return await res.json()
@@ -15,9 +15,10 @@ try {
 
 export async function unorderedSentence() {
      sentences = await getRandomSentence()
-    let sentenceText = sentences.quotes[0].text
+     //console.log(sentences[0]);
+    let sentenceText = sentences[0].content
     let sentenceSplit = sentenceText.split(' ')
-    console.log(sentenceSplit);
+    //console.log(sentenceSplit);
     let divContainer = document.createElement('div')
     divContainer.classList.add('text-row')
     let arr = []
@@ -28,7 +29,7 @@ export async function unorderedSentence() {
             arr.push(randomIndex)
         }
     }
-    
+    console.log(arr);
     for(let i = 0; i < arr.length; i++) {
         let word = document.createElement('span')
         word.classList.add('text-item')
@@ -45,7 +46,7 @@ export async function unorderedSentence() {
 
 
 export async function orderedSentence() {
-    let sentenceText = sentences.quotes[0].text
+    let sentenceText = sentences[0].content
     let sentenceSplit = sentenceText.split(' ')
     let wordsArr = []
     for(let i = 0; i < sentenceSplit.length; i++) {
@@ -66,7 +67,7 @@ export async function orderedSentence() {
 }
 
 export async function answer() {
-    let sentenceText = sentences.quotes[0].text
+    let sentenceText = sentences[0].content;
     let sentenceSplit = sentenceText.split(' ')
     let divContainer = document.createElement('div')
     divContainer.classList.add('text-row-answer')

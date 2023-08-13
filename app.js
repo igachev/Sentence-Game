@@ -38,7 +38,7 @@ showBtn.addEventListener('click',() => {
 const tryApp = async () => {
     try {
         await unorderedSentence()
-        await dragAndDropWords() 
+         dragAndDropWords() 
          answer() 
         
     } catch (error) {
